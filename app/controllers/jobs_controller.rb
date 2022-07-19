@@ -1,5 +1,7 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, :except => [:index, :show] 
+  before_action :set_job, only: %i[  edit update destroy ]
+  
 
   # GET /jobs or /jobs.json
   def index
