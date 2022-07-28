@@ -8,18 +8,14 @@
     <%= f.text_field :"f_name",autofocus: true, autocomplete: "Full Name" %>
   </div>
   <div class="field">
-    <%= f.label :"Other names" %><br />
-    <%= f.text_field :"o_name", autocomplete: "Other Names" %>
-  </div>
-  <div class="field">
-    <%= f.label :"Last Name" %><br />
-    <%= f.text_field :"l_name", autocomplete: "Last Name" %>
-  </div>
-  <div class="field">
     <%= f.label :"Description" %><br />
     <%= f.text_field :"desc"%>
+    <br/>
   </div>
-  
+  <div class="field">
+  <%= f.label "What are you registering as?"%>
+  <%= f.select(:role, options_for_select([['Employer',1], ['Job Seeker',2]]), {}, {class: "form-control"}) %>
+  </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email,  autocomplete: "email" %>

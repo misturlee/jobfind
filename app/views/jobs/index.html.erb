@@ -24,5 +24,7 @@
     
   
 </div>
+<% if current_user.role == "1"%>
 
 <%= link_to "New job", new_job_path %>
+<%end%>
