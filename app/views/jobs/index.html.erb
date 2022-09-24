@@ -8,9 +8,11 @@
     <h5 class="card-title"><%= job.job_title %></h5>
     <h6 class="card-subtitle mb-2 text-muted"><%= job.category%></h6>
     <p class="card-text"><%= job.job_desc.truncate(30) + "..." %></p>
+    
   
   </div>
   <div class="container">
+ 
   <p>
       <%= link_to "Show this job", job, class:"btn btn-primary" %>
     </p>
@@ -24,7 +26,5 @@
     
   
 </div>
-<% if current_user.role == "1"%>
 
-<%= link_to "New job", new_job_path %>
-<%end%>
+
