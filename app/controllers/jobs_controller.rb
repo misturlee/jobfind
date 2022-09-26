@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show] 
   before_action :set_job, only: %i[ show edit update destroy ]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
 
   # GET /jobs or /jobs.json
@@ -14,7 +15,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
-    @job = Job.new
+    @job = current_user.jobs.build
   end
 
   # GET /jobs/1/edit
@@ -57,6 +58,10 @@ class JobsController < ApplicationController
       format.html { redirect_to jobs_url, notice: "Job was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+  def correct_user
+    @job = current_user.jobs.find_by(id: params[:id])
+    redirect_to jobs_url, notice: "You are not authorised to make changes to this job" if @job.nil?
   end
 
   private
