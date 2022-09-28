@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, :except => [:index, :show] 
+  before_action :authenticate_user!, :except => [:index, :show, :searchh] 
   before_action :set_job, only: %i[ show edit update destroy ]
   before_action :correct_user, only: [:edit, :update, :destroy]
   
@@ -7,7 +7,12 @@ class JobsController < ApplicationController
   # GET /jobs or /jobs.json
   def index
     @jobs = Job.all
+    end
+  def searchh 
+    @jobs = Job.where("category LIKE ? OR job_title LIKE ?", "%"+ params[:q] +"%", "%"+ params[:q] +"%")
+
   end
+   
 
   # GET /jobs/1 or /jobs/1.json
   def show
@@ -72,6 +77,6 @@ class JobsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_params
-      params.require(:job).permit(:job_title, :job_desc, :salary, :category, :user_id)
+      params.require(:job).permit(:job_title, :job_desc, :salary, :category, :user_id, :search)
     end
 end
