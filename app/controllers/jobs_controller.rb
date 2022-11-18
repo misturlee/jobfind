@@ -6,7 +6,7 @@ class JobsController < ApplicationController
 
   # GET /jobs or /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = Job.paginate(:page => params[:page], :per_page => 1)
     end
   def searchh 
     @jobs = Job.where("category LIKE ? OR job_title LIKE ?", "%"+ params[:q] +"%", "%"+ params[:q] +"%")

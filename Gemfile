@@ -33,6 +33,9 @@ gem "jbuilder"
 # Adding devise authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
+#Adding will paginate to the website
+gem 'will_paginate', '~> 3.3', '>= 3.3.1'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
